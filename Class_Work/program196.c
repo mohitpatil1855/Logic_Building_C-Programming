@@ -1,0 +1,23 @@
+//to create file 
+
+#include <stdio.h>
+#include <fcntl.h>
+
+int main()
+{
+    int fd = 0;
+
+    fd = creat("PPA.txt", 0777);
+
+    if(fd==-1)
+    {
+        printf("unable to create file..");
+    }
+
+    else
+    {
+        printf("File Successfully created..");
+    }
+
+    return 0;
+}

@@ -1,0 +1,37 @@
+// to open the file and reading the data and display it using write() system call
+
+#include <stdio.h>
+#include <fcntl.h>
+
+int main()
+{
+    int fd = 0, iRet = 0;
+    char FileName[20];
+    char Data[50] = {'\0'}; // Initialized with default value of character to avoid printing of garbage value ehle reading file
+
+    printf("Enter the name of file :");
+    scanf("%s", FileName);
+
+    fd = open(FileName, O_RDWR);
+    if (fd == -1)
+    {
+        printf("Unable to open..");
+        return -1;
+    }
+
+    iRet = read(fd, Data, 7); // reading the data
+
+    printf("%d bytes gets successfully read\n", iRet);
+
+    printf("Data readed from file: \n");
+
+    printf("\n");
+
+    write(1, Data, iRet); // printing the readed data using write() system call
+
+    // 1 :- stdOut 
+
+    close(fd);
+
+    return 0;
+}
